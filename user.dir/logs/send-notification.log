@@ -1,0 +1,100 @@
+10:50:48.550 [main] DEBUG f.j.n.c.ConfigurationReader - Cannot read configuration at [file:/home/andy/.send-notification], will use default one.
+java.io.FileNotFoundException: /home/andy/.send-notification (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+	at java.net.URL.openStream(URL.java:1045)
+	at fr.jcgay.notification.configuration.ConfigurationReader.atUrl(ConfigurationReader.java:40)
+	at fr.jcgay.notification.configuration.ConfigurationReader.atPath(ConfigurationReader.java:30)
+	at fr.jcgay.notification.SendNotification.<init>(SendNotification.java:60)
+	at engine.modules.Notify.main(Notify.java:14)
+10:50:48.560 [main] DEBUG f.j.n.c.ConfigurationReader - Notification configuration read from file:/home/andy/.send-notification is: {}.
+10:50:48.566 [main] DEBUG f.j.n.n.kdialog.KdialogNotifier - Configuring Kdialog for application Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}: KdialogConfiguration{bin=kdialog}.
+10:50:48.569 [main] DEBUG f.j.n.n.n.NotifySendNotifier - Configuring notify-send for application Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}: NotifySendConfiguration{bin=notify-send}.
+10:50:48.579 [main] DEBUG f.j.n.n.s.SystemTrayNotifier - Configuring System Tray for application Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}.
+10:50:48.581 [main] DEBUG f.j.n.n.executor.RuntimeExecutor - Will execute command line: kdialog -v (waiting at most: 500 milliseconds)
+10:50:48.727 [main] DEBUG f.j.n.n.executor.RuntimeExecutor - An error occurs while running command: <[kdialog -v]>
+java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.io.IOException: Cannot run program "kdialog": error=2, No such file or directory
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.exec(RuntimeExecutor.java:66)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.tryExec(RuntimeExecutor.java:81)
+	at fr.jcgay.notification.notifier.kdialog.KdialogNotifier.tryInit(KdialogNotifier.java:75)
+	at fr.jcgay.notification.SendNotification.defaultNotifier(SendNotification.java:140)
+	at fr.jcgay.notification.SendNotification.chooseNotifier(SendNotification.java:75)
+	at fr.jcgay.notification.SendNotification.initNotifier(SendNotification.java:84)
+	at engine.modules.Notify.main(Notify.java:14)
+Caused by: java.lang.RuntimeException: java.io.IOException: Cannot run program "kdialog": error=2, No such file or directory
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.lambda$exec$0(RuntimeExecutor.java:58)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Cannot run program "kdialog": error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.lambda$exec$0(RuntimeExecutor.java:44)
+	... 4 common frames omitted
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:247)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:134)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 5 common frames omitted
+10:50:48.728 [main] DEBUG f.j.notification.SendNotification - KdialogNotifier{configuration=KdialogConfiguration{bin=kdialog}, application=Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}} is available ? false.
+10:50:48.730 [main] DEBUG f.j.n.n.executor.RuntimeExecutor - Will execute command line: notify-send -v (waiting at most: 500 milliseconds)
+10:50:48.868 [pool-2-thread-1] DEBUG f.j.n.n.executor.RuntimeExecutor - Command <[notify-send -v]> ends successfully.
+10:50:48.869 [main] DEBUG f.j.notification.SendNotification - NotifySendNotifier{application=Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}, configuration=NotifySendConfiguration{bin=notify-send}} is available ? true.
+10:51:23.471 [main] DEBUG f.j.n.c.ConfigurationReader - Cannot read configuration at [file:/home/andy/.send-notification], will use default one.
+java.io.FileNotFoundException: /home/andy/.send-notification (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+	at java.net.URL.openStream(URL.java:1045)
+	at fr.jcgay.notification.configuration.ConfigurationReader.atUrl(ConfigurationReader.java:40)
+	at fr.jcgay.notification.configuration.ConfigurationReader.atPath(ConfigurationReader.java:30)
+	at fr.jcgay.notification.SendNotification.<init>(SendNotification.java:60)
+	at engine.modules.Notify.main(Notify.java:14)
+10:51:23.482 [main] DEBUG f.j.n.c.ConfigurationReader - Notification configuration read from file:/home/andy/.send-notification is: {}.
+10:51:23.486 [main] DEBUG f.j.n.n.kdialog.KdialogNotifier - Configuring Kdialog for application Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}: KdialogConfiguration{bin=kdialog}.
+10:51:23.489 [main] DEBUG f.j.n.n.n.NotifySendNotifier - Configuring notify-send for application Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}: NotifySendConfiguration{bin=notify-send}.
+10:51:23.490 [main] DEBUG f.j.n.n.s.SystemTrayNotifier - Configuring System Tray for application Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}.
+10:51:23.492 [main] DEBUG f.j.n.n.executor.RuntimeExecutor - Will execute command line: kdialog -v (waiting at most: 500 milliseconds)
+10:51:23.562 [main] DEBUG f.j.n.n.executor.RuntimeExecutor - An error occurs while running command: <[kdialog -v]>
+java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.io.IOException: Cannot run program "kdialog": error=2, No such file or directory
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.exec(RuntimeExecutor.java:66)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.tryExec(RuntimeExecutor.java:81)
+	at fr.jcgay.notification.notifier.kdialog.KdialogNotifier.tryInit(KdialogNotifier.java:75)
+	at fr.jcgay.notification.SendNotification.defaultNotifier(SendNotification.java:140)
+	at fr.jcgay.notification.SendNotification.chooseNotifier(SendNotification.java:75)
+	at fr.jcgay.notification.SendNotification.initNotifier(SendNotification.java:84)
+	at engine.modules.Notify.main(Notify.java:14)
+Caused by: java.lang.RuntimeException: java.io.IOException: Cannot run program "kdialog": error=2, No such file or directory
+	at com.google.common.base.Throwables.propagate(Throwables.java:160)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.lambda$exec$0(RuntimeExecutor.java:58)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Cannot run program "kdialog": error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at fr.jcgay.notification.notifier.executor.RuntimeExecutor.lambda$exec$0(RuntimeExecutor.java:44)
+	... 4 common frames omitted
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:247)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:134)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 5 common frames omitted
+10:51:23.562 [main] DEBUG f.j.notification.SendNotification - KdialogNotifier{configuration=KdialogConfiguration{bin=kdialog}, application=Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}} is available ? false.
+10:51:23.564 [main] DEBUG f.j.n.n.executor.RuntimeExecutor - Will execute command line: notify-send -v (waiting at most: 500 milliseconds)
+10:51:23.570 [pool-2-thread-1] DEBUG f.j.n.n.executor.RuntimeExecutor - Command <[notify-send -v]> ends successfully.
+10:51:23.571 [main] DEBUG f.j.notification.SendNotification - NotifySendNotifier{application=Application{id=application/x-vnd-jcgay.send-notification-default, name=Send Notification (Default), timeout=-1, icon=Icon{id=send-notification, content=jar:file:/home/andy/.gradle/caches/modules-2/files-2.1/fr.jcgay.send-notification/send-notification-cli/0.15.0/6b7e86b574e0dc358d2153f78379003e1ff5a465/send-notification-cli-0.15.0.jar!/brochure5.png}}, configuration=NotifySendConfiguration{bin=notify-send}} is available ? true.
